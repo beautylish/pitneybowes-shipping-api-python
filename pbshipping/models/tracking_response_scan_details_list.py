@@ -36,6 +36,7 @@ class TrackingResponseScanDetailsList(object):
     openapi_types = {
         'event_date': 'date',
         'event_time': 'str',
+        'event_time_offset': 'str',
         'event_city': 'str',
         'event_state_or_province': 'str',
         'postal_code': 'int',
@@ -48,6 +49,7 @@ class TrackingResponseScanDetailsList(object):
     attribute_map = {
         'event_date': 'eventDate',
         'event_time': 'eventTime',
+        'event_time_offset': 'eventTimeOffset',
         'event_city': 'eventCity',
         'event_state_or_province': 'eventStateOrProvince',
         'postal_code': 'postalCode',
@@ -57,7 +59,7 @@ class TrackingResponseScanDetailsList(object):
         'package_status': 'packageStatus'
     }
 
-    def __init__(self, event_date=None, event_time=None, event_city=None, event_state_or_province=None, postal_code=None, country=None, scan_type=None, scan_description=None, package_status=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, event_date=None, event_time=None, event_time_offset=None, event_city=None, event_state_or_province=None, postal_code=None, country=None, scan_type=None, scan_description=None, package_status=None, local_vars_configuration=None):  # noqa: E501
         """TrackingResponseScanDetailsList - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -65,6 +67,7 @@ class TrackingResponseScanDetailsList(object):
 
         self._event_date = None
         self._event_time = None
+        self._event_time_offset = None
         self._event_city = None
         self._event_state_or_province = None
         self._postal_code = None
@@ -78,6 +81,8 @@ class TrackingResponseScanDetailsList(object):
             self.event_date = event_date
         if event_time is not None:
             self.event_time = event_time
+        if event_time_offset is not None:
+            self.event_time_offset = event_time_offset
         if event_city is not None:
             self.event_city = event_city
         if event_state_or_province is not None:
@@ -134,6 +139,27 @@ class TrackingResponseScanDetailsList(object):
         """
 
         self._event_time = event_time
+
+    @property
+    def event_time_offset(self):
+        """Gets the event_time_offset of this TrackingResponseScanDetailsList.  # noqa: E501
+
+
+        :return: The event_time_offset of this TrackingResponseScanDetailsList.  # noqa: E501
+        :rtype: str
+        """
+        return self._event_time_offset
+
+    @event_time_offset.setter
+    def event_time_offset(self, event_time_offset):
+        """Sets the event_time_offset of this TrackingResponseScanDetailsList.
+
+
+        :param event_time_offset: The event_time_offset of this TrackingResponseScanDetailsList.  # noqa: E501
+        :type: str
+        """
+
+        self._event_time_offset = event_time_offset
 
     @property
     def event_city(self):
