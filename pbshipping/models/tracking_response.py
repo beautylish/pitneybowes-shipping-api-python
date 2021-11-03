@@ -42,14 +42,17 @@ class TrackingResponse(object):
         'updated_date': 'date',
         'updated_time': 'str',
         'ship_date': 'date',
+        'ship_time': 'str',
+        'ship_time_offset': 'str',
         'estimated_delivery_date': 'date',
         'estimated_delivery_time': 'str',
         'delivery_date': 'date',
         'delivery_time': 'str',
+        'delivery_time_offset': 'str',
         'delivery_location': 'str',
         'delivery_location_description': 'str',
         'signed_by': 'str',
-        'weight': 'int',
+        'weight': 'float',
         'weight_oum': 'str',
         'reattempt_date': 'date',
         'reattempt_time': 'str',
@@ -67,10 +70,13 @@ class TrackingResponse(object):
         'updated_date': 'updatedDate',
         'updated_time': 'updatedTime',
         'ship_date': 'shipDate',
+        'ship_time': 'shipTime',
+        'ship_time_offset': 'shipTimeOffset',
         'estimated_delivery_date': 'estimatedDeliveryDate',
         'estimated_delivery_time': 'estimatedDeliveryTime',
         'delivery_date': 'deliveryDate',
         'delivery_time': 'deliveryTime',
+        'delivery_time_offset': 'deliveryTimeOffset',
         'delivery_location': 'deliveryLocation',
         'delivery_location_description': 'deliveryLocationDescription',
         'signed_by': 'signedBy',
@@ -83,7 +89,7 @@ class TrackingResponse(object):
         'scan_details_list': 'scanDetailsList'
     }
 
-    def __init__(self, package_count=None, carrier=None, tracking_number=None, reference_number=None, status=None, updated_date=None, updated_time=None, ship_date=None, estimated_delivery_date=None, estimated_delivery_time=None, delivery_date=None, delivery_time=None, delivery_location=None, delivery_location_description=None, signed_by=None, weight=None, weight_oum=None, reattempt_date=None, reattempt_time=None, destination_address=None, sender_address=None, scan_details_list=None, local_vars_configuration=None):  # noqa: E501
+    def __init__(self, package_count=None, carrier=None, tracking_number=None, reference_number=None, status=None, updated_date=None, updated_time=None, ship_date=None, ship_time=None, ship_time_offset=None, estimated_delivery_date=None, estimated_delivery_time=None, delivery_date=None, delivery_time=None, delivery_time_offset=None, delivery_location=None, delivery_location_description=None, signed_by=None, weight=None, weight_oum=None, reattempt_date=None, reattempt_time=None, destination_address=None, sender_address=None, scan_details_list=None, local_vars_configuration=None):  # noqa: E501
         """TrackingResponse - a model defined in OpenAPI"""  # noqa: E501
         if local_vars_configuration is None:
             local_vars_configuration = Configuration()
@@ -97,10 +103,13 @@ class TrackingResponse(object):
         self._updated_date = None
         self._updated_time = None
         self._ship_date = None
+        self._ship_time = None
+        self._ship_time_offset = None
         self._estimated_delivery_date = None
         self._estimated_delivery_time = None
         self._delivery_date = None
         self._delivery_time = None
+        self._delivery_time_offset = None
         self._delivery_location = None
         self._delivery_location_description = None
         self._signed_by = None
@@ -129,6 +138,10 @@ class TrackingResponse(object):
             self.updated_time = updated_time
         if ship_date is not None:
             self.ship_date = ship_date
+        if ship_time is not None:
+            self.ship_time = ship_time
+        if ship_time_offset is not None:
+            self.ship_time_offset = ship_time_offset
         if estimated_delivery_date is not None:
             self.estimated_delivery_date = estimated_delivery_date
         if estimated_delivery_time is not None:
@@ -137,6 +150,8 @@ class TrackingResponse(object):
             self.delivery_date = delivery_date
         if delivery_time is not None:
             self.delivery_time = delivery_time
+        if delivery_time_offset is not None:
+            self.delivery_time_offset = delivery_time_offset
         if delivery_location is not None:
             self.delivery_location = delivery_location
         if delivery_location_description is not None:
@@ -260,7 +275,9 @@ class TrackingResponse(object):
         :param status: The status of this TrackingResponse.  # noqa: E501
         :type: str
         """
-        allowed_values = ["In Transit", "Delivered", "Manifest"]  # noqa: E501
+        allowed_values = ["Acceptance", "Delivered", "DeliveryAttempt", "Exception", "InTransit", "Manifest",
+                          "OutForDelivery", "PickedUp", "PickupMissed", "ReadyForPickup",
+                          "ReturnToSender"]  # noqa: E501
         if self.local_vars_configuration.client_side_validation and status not in allowed_values:  # noqa: E501
             raise ValueError(
                 "Invalid value for `status` ({0}), must be one of {1}"  # noqa: E501
@@ -331,6 +348,48 @@ class TrackingResponse(object):
         """
 
         self._ship_date = ship_date
+
+    @property
+    def ship_time(self):
+        """Gets the ship_time of this TrackingResponse.  # noqa: E501
+
+
+        :return: The ship_time of this TrackingResponse.  # noqa: E501
+        :rtype: time
+        """
+        return self._ship_time
+
+    @ship_time.setter
+    def ship_time(self, ship_time):
+        """Sets the ship_time of this TrackingResponse.
+
+
+        :param ship_time: The ship_time of this TrackingResponse.  # noqa: E501
+        :type: time
+        """
+
+        self._ship_time = ship_time
+
+    @property
+    def ship_time_offset(self):
+        """Gets the ship_time_offset of this TrackingResponse.  # noqa: E501
+
+
+        :return: The ship_time_offset of this TrackingResponse.  # noqa: E501
+        :rtype: str
+        """
+        return self._ship_time_offset
+
+    @ship_time_offset.setter
+    def ship_time_offset(self, ship_time_offset):
+        """Sets the ship_time_offset of this TrackingResponse.
+
+
+        :param ship_time: The ship_time_offset of this TrackingResponse.  # noqa: E501
+        :type: str
+        """
+
+        self._ship_time_offset = ship_time_offset
 
     @property
     def estimated_delivery_date(self):
@@ -415,6 +474,28 @@ class TrackingResponse(object):
         """
 
         self._delivery_time = delivery_time
+
+    @property
+    def delivery_time_offset(self):
+        """Gets the delivery_time_offset of this TrackingResponse.  # noqa: E501
+
+
+        :return: The delivery_time_offset of this TrackingResponse.  # noqa: E501
+        :rtype: str
+        """
+        return self._delivery_time_offset
+
+    @delivery_time_offset.setter
+    def delivery_time_offset(self, delivery_time_offset):
+        """Sets the delivery_time_offset of this TrackingResponse.
+
+
+        :param delivery_time_offset: The delivery_time_offset of this TrackingResponse.  # noqa: E501
+        :type: str
+        """
+
+        self._delivery_time_offset = delivery_time_offset
+
 
     @property
     def delivery_location(self):
