@@ -39,7 +39,7 @@ class TrackingResponseScanDetailsList(object):
         'event_time_offset': 'str',
         'event_city': 'str',
         'event_state_or_province': 'str',
-        'postal_code': 'int',
+        'postal_code': 'str',
         'country': 'str',
         'scan_type': 'str',
         'scan_description': 'str',
